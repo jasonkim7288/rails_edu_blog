@@ -2,7 +2,7 @@
     <nav class="nav-title">
         <div class="nav-title-wrapper">
             <a href="<%= root_path %>">
-                <% if header_type == :word %>
+                <% if level == :admin %>
                     <h1>Medium / Manager</h1>
                 <% else %>
                     <div class="menu-icon">
@@ -30,11 +30,17 @@
     </nav>
     <nav class="nav-category">
         <div class="center-nav">
-            <%= link_to "<", "#", class: "category" %>
-            <% categories.each do |category| %>
-                <%= link_to category[:name], "#", class: "category" %>
+            <% if level == :admin %>
+                <%= link_to "Posts", admin_posts_path, class: "category" %>
+                <%= link_to "Categories", admin_categories_path, class: "category" %>
+                <%= link_to "Users", admin_users_path, class: "category" %>
+            <% else %>
+                <%= link_to "<", "#", class: "category" %>
+                <% categories.each do |category| %>
+                    <%= link_to category[:name], "#", class: "category" %>
+                <% end %>
+                <%= link_to ">", "#", class: "category" %>
             <% end %>
-            <%= link_to ">", "#", class: "category" %>
         </div>
     </nav>
 </header>
