@@ -105,6 +105,18 @@ header {
     section {
         max-width: 705px;
         margin: 0 calc(#{$grid-gap} *2) 0 #{$body-inside-x};
+        .create-button {
+            margin: 30px 0;
+            padding: 10px;
+            border: 1px solid #a3a3a3;
+            border-radius: 8px;
+            font-size: 1.5em;
+            color: $gray-color;
+            &:hover {
+                color: $black-color;
+                cursor: pointer;
+            }
+        }
         .article-summary {
             display: grid;
             grid-template-columns: 1fr max-content;
@@ -119,10 +131,10 @@ header {
                 grid-area: 2 / 1;
                 color: $gray-color;
             }
-            .article-author {
+            .article-created-at {
                 grid-area: 3 / 1;
             }
-            .article-created-at {
+            .article-author {
                 grid-area: 4 / 1;
                 color: $gray-color;
             }
@@ -130,6 +142,26 @@ header {
                 grid-area: 1 / 2 / 5 / -1;
                 width: 150px;
                 height: 100%;
+            }
+            .article-command {
+                grid-area: 4 / 1;
+                text-align: right;
+                button {
+                    display: inline-block;
+                    margin: 0 20px;
+                    padding: 5px;
+                    border: 1px solid #a3a3a3;
+                    border-radius: 5px;
+                    font-size: 1em;
+                    min-width: 40px;
+                    width: 100px;
+                    text-align: center;
+                    color: $gray-color;
+                    &:hover {
+                        color: $black-color;
+                        cursor: pointer;
+                    }                    
+                }
             }
         }
     }
@@ -172,4 +204,10 @@ header {
             }
         }
     }
+}
+
+footer {
+    height: 50px;
+    display: flex;
+    justify-content: center;
 }
