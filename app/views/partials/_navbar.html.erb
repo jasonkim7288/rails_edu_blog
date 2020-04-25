@@ -1,0 +1,40 @@
+<header>
+    <nav class="nav-title">
+        <div class="nav-title-wrapper">
+            <a href="<%= root_path %>">
+                <% if header_type == :word %>
+                    <h1>Medium</h1>
+                <% else %>
+                    <div class="menu-icon">
+                        <i class="fab fa-medium"></i>
+                    </div>
+                <% end %>
+            </a>
+            <div class="right-nav">
+                <div id="search-bar" class="menu-item">
+                    <i class="fas fa-search"></i>
+                    <input id="input-search" placeholder="Search Medium">
+                </div>
+                <a href="<%= contact_path %>">
+                    <div class="menu-item">
+                        <i class="far fa-envelope"></i>
+                    </div>
+                </a>
+                <a href="<%= about_path %>">
+                    <div class="menu-item">
+                        <i class="fas fa-info"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <nav class="nav-category">
+        <div class="center-nav">
+            <%= link_to "<", "#", class: "category" %>
+            <% categories.each do |category| %>
+                <%= link_to category[:name], "#", class: "category" %>
+            <% end %>
+            <%= link_to ">", "#", class: "category" %>
+        </div>
+    </nav>
+</header>
