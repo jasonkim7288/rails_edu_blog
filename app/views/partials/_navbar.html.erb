@@ -31,9 +31,9 @@
     <nav class="nav-category">
         <div class="center-nav">
             <% if level == :admin %>
-                <%= link_to "Posts", admin_posts_path, class: "category" %>
-                <%= link_to "Categories", admin_categories_path, class: "category" %>
-                <%= link_to "Users", admin_users_path, class: "category" %>
+                <%= link_to "Posts", admin_posts_path, class: "category #{params[:controller] == 'admin/posts' ? 'active' : ''}" %>
+                <%= link_to "Categories", admin_categories_path, class: "category #{params[:controller] == 'admin/categories' ? 'active' : ''}" %>
+                <%= link_to "Users", admin_users_path, class: "category #{params[:controller] == 'admin/users' ? 'active' : ''}" %>
             <% else %>
                 <%= link_to "<", "#", class: "category" %>
                 <% categories.each do |category| %>

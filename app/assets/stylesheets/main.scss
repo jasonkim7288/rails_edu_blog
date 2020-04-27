@@ -20,6 +20,15 @@ a {
     text-decoration: none;
 }
 
+table {
+    border-collapse: collapse;
+    td, th {
+        padding: 5px 20px;
+        border: 1px solid #ddd;
+    }
+    
+}
+
 header {
     display: initial;
     .nav-title {
@@ -94,6 +103,9 @@ header {
                 &:hover {
                     color: $black-color;
                 }
+            }
+            .active {
+                color: $black-color;
             }
         }
     }

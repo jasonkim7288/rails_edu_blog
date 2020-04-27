@@ -1,26 +1,18 @@
 <div class="main">
     <section>
-        <a href="#"><button class="create-button">Create New</button></a>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <p class="article-command"><a href="#"><button>Edit</button></a><a href="#"><button>Delete</button></a></p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <p class="article-command"><button><a href="#">Edit</a></button><button><a href="#">Delete</a></button></p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <p class="article-command"><button><a href="#">Edit</a></button><button><a href="#">Delete</a></button></p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
+        <a href="<%= new_admin_post_path %>"><button class="create-button">Create New</button></a>
+        <% if @posts.exists? %>
+            <% @posts.each do |post| %>
+                <article class="article-summary">
+                    <h1 class="article-title"><%= post.title %></h1>
+                    <p class="article-content"><%= post.body %></p>
+                    <p class="article-created-at"><%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %></p>
+                    <p class="article-command"><a href="<%= edit_admin_post_path(post) %>"><button>Edit</button></a> <%= link_to button_tag("Delete"), admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+                    <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
+                </article>
+            <% end %>
+        <% else %>
+            <h2>There is no post</h2>
+        <% end %>
     </section>
 </div>

@@ -1,2 +1,22 @@
-<h1>Admin::Categories#new</h1>
-<p>Find me in app/views/admin/categories/new.html.erb</p>
+<div class="main">
+    <section>
+        <h1><%= @page_title %></h1>
+        <%= form_with model: [:admin, @category] do |f|%>
+            <% if @category.errors.any? %>
+                <% @category.errors.full_messages.each do |msg| %>
+                    <h2><%= msg %></h2>
+                <% end %>
+            <% end %>
+
+            <div>
+                <%= f.label :name %>
+                <%= f.text_field :name %>
+            </div>
+
+            <div>
+                <%= f.submit "Submit" %>
+                <%= link_to 'Cancel', admin_categories_path %>                
+            </div>
+        <% end %>
+    </section>
+</div>

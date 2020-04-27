@@ -1,2 +1,50 @@
-<h1>Admin::Posts#new</h1>
-<p>Find me in app/views/admin/posts/new.html.erb</p>
+<div class="main">
+    <section>
+        <h1><%= @page_title %></h1>
+        <%= form_with model: [:admin, @post] do |f| %>
+            <% if @post.errors.any? %>
+                <% @post.errors.full_messages.each do |msg| %>
+                    <h2><%= msg %></h2>
+                <% end %>
+            <% end %>
+
+            <div>
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+            </div>
+
+            <div>
+                <%= f.label :category %>
+                <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "Select One"}) %>
+            </div>
+
+            <div>
+                <%= f.label :author %>
+                <%= f.collection_select(:user_id, @users, :id, :name, {prompt: "Select One"}) %>
+            </div>
+
+            <div>
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+            </div>
+
+            <div>
+                <%= f.label :tags %>
+                <%= f.text_area :tags %>
+            </div>
+
+            <div>
+                <%= f.label :body %>
+                <%= f.text_area :body %>
+            </div>
+
+            <div>
+                <%= f.submit %>
+            </div>
+
+            <div>
+                <%= link_to 'Cancel', admin_posts_path %>
+            </div>
+        <% end %>
+    </section>
+</div>
