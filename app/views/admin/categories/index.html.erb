@@ -1,6 +1,7 @@
 <div class="main">
     <section>
-        <h1>Manage Categories <%= link_to 'Create New', new_admin_category_path %></h1>
+        <h1>Manage Categories</h1>
+        <%= link_to 'Create New', new_admin_category_path, class: "create-button" %>
         <table>
             <tr>
                 <th>Category Title</th>
@@ -11,7 +12,7 @@
                 <tr>
                     <td><%= category.name %></td>
                     <td><%= category.created_at.to_time.strftime("%B %e at %l:%M %p") %></td>
-                    <td><%= link_to 'Edit', edit_admin_category_path(category) %>       <%= link_to 'Delete', admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"} %></td>
+                    <td><%= link_to 'Edit', edit_admin_category_path(category), class: "link" %>       <%= link_to 'Delete', admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "link" %></td>
                 </tr>
             <% end %>
         </table>

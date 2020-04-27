@@ -1,13 +1,16 @@
 class Admin::UsersController < Admin::ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   def new
-    @page_title = "Add Uuser"
+    @page_title = "Add User"
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
+    # @user = User.new(user_params)
+    password_salt_value = BCrypt::Engine.generate_salt
+    password_hash_value = BCrypt::Engine.hash_secret(params[:user][:password], password_salt_value)
+    @user = User.new({name: params[:user][:name], email: params[:user][:email], password_salt: password_salt_value, password_hash: password_hash_value})
+    if @user.save!
       flash[:notice] = "Cateogry created"
       redirect_to admin_users_path
     else
@@ -20,7 +23,9 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    password_salt_value = BCrypt::Engine.generate_salt
+    password_hash_value = BCrypt::Engine.hash_secret(params[:user][:password], password_salt_value)
+    if @user.update({name: params[:user][:name], email: params[:user][:email], password_salt: password_salt_value, password_hash: password_hash_value})
       flash[:notice] = "User updated"
       redirect_to admin_users_path
     else

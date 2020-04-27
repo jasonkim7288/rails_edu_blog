@@ -16,16 +16,18 @@
 
 <body>
     <%= render 'partials/navbar', level: :user %>
-    <div class="main">
-        <section>
-            <% if flash[:notice] %>
-                <h1><%= flash[:notice] %></h1>
-            <% end %>
-            <% if flash[:alert] %>
-                <h1><%= flash[:alert] %></h1>
-            <% end %>
-        <section>
-    </div>
+    <% if flash[:notice] || flash[:alert] %>
+        <div class="main">
+            <section>
+                <% if flash[:notice] %>
+                    <h1><%= flash[:notice] %></h1>
+                <% end %>
+                <% if flash[:alert] %>
+                    <h1><%= flash[:alert] %></h1>
+                <% end %>
+            <section>
+        </div>
+    <% end %>
     <%= yield %>
     <%= render 'partials/footer' %>
 </body>
