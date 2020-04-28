@@ -13,7 +13,19 @@
             <div class="right-nav">
                 <div id="search-bar" class="menu-item">
                     <i class="fas fa-search"></i>
-                    <input id="input-search" placeholder="Search Medium">
+                    <% if params[:controller] == "admin/posts" %>
+                        <%= form_with url: admin_posts_path, method: "get" do %>
+                            <%= text_field_tag :search, params[:search], id: "input-search", placeholder: "Search Posts" %>
+                        <% end %>
+                    <% elsif params[:controller] == "admin/categories" %>
+                        <%= form_with url: admin_categories_path, method: "get" do %>
+                            <%= text_field_tag :search, params[:search], id: "input-search", placeholder: "Search Categories" %>
+                        <% end %>
+                    <% elsif params[:controller] == "admin/users" %>
+                        <%= form_with url: admin_users_path, method: "get" do %>
+                            <%= text_field_tag :search, params[:search], id: "input-search", placeholder: "Search Users" %>
+                        <% end %>
+                    <% end %>
                 </div>
                 <a href="<%= contact_path %>">
                     <div class="menu-item">

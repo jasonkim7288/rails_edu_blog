@@ -19,6 +19,7 @@
                     </tr>
                 <% end %>
             </table>
+            <%= will_paginate @users, class: "page"%>
         <% else %>
             <h2>There is no user</h2>
         <% end %>

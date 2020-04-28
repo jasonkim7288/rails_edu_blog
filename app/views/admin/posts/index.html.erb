@@ -5,12 +5,13 @@
             <% @posts.each do |post| %>
                 <article class="article-summary">
                     <h1 class="article-title"><%= post.title %></h1>
-                    <p class="article-content"><%= post.body %></p>
+                    <p class="article-content"><%= truncate post.body, length: 200 %></p>
                     <p class="article-created-at"><%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %></p>
                     <p class="article-command"><a href="<%= edit_admin_post_path(post) %>"><button>Edit</button></a> <%= link_to button_tag("Delete"), admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></p>
                     <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
                 </article>
             <% end %>
+            <%= will_paginate @posts, class: "page"%>
         <% else %>
             <h2>There is no post</h2>
         <% end %>

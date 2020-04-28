@@ -8,4 +8,7 @@ class Post < ApplicationRecord
     validates :user_id, presence: false
     validates :body, presence: true
 
+    def self.search(query)
+        where("title like ? OR body like ?", "%#{query}%", "%#{query}%")
+    end
 end

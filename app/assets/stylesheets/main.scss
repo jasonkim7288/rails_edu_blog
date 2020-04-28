@@ -55,25 +55,28 @@ header {
                     color: $gray-color;
                     margin: 8px;
                     vertical-align: middle;
-                    input {
-                        width: 0;
-                        min-width: 0;
-                        font-size: 0.8em;
-                        font-weight: 100;
-                        letter-spacing: 0.05em;
-                        vertical-align: middle;
-                        border: none;
-                        outline: none;
-                        transition: all;
-                        -webkit-transition: all;
-                        transition-duration: 0.2s;
-                        -webkit-transition-duration: 0.2s;
-                        cursor: pointer;
-                    }
-                    .search-open {
-                        width: 200px;
-                        min-width: 200px;
-                        cursor: text;
+                    form {
+                        display: inline-block;
+                        input {
+                            width: 0;
+                            min-width: 0;
+                            font-size: 0.8em;
+                            font-weight: 100;
+                            letter-spacing: 0.05em;
+                            vertical-align: middle;
+                            border: none;
+                            outline: none;
+                            transition: all;
+                            -webkit-transition: all;
+                            transition-duration: 0.2s;
+                            -webkit-transition-duration: 0.2s;
+                            cursor: pointer;
+                        }
+                        .search-open {
+                            width: 200px;
+                            min-width: 200px;
+                            cursor: text;
+                        }
                     }
                     &:hover {
                         color: $black-color;
@@ -189,6 +192,23 @@ header {
                 cursor: pointer;
             }
         }
+        table {
+            margin-bottom: 30px;
+        }
+        .page {
+            text-align: center;
+            a, span, em {
+                padding: 10px;
+                color: $gray-color;
+            }
+            .current {
+                color: $black-color;
+                font-style: normal;
+            }
+            a:hover {
+                color: $black-color;
+            }
+        }
     }
     aside {
         min-width: $aside-width;
@@ -231,8 +251,19 @@ header {
     }
 }
 
+#flash {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 footer {
+    position: fixed;
+    bottom: 0;
+    padding-top: 10px;
     height: 50px;
-    display: flex;
-    justify-content: center;
+    display: block;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+    background-color: white;
 }
