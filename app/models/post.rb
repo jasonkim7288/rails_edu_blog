@@ -8,6 +8,8 @@ class Post < ApplicationRecord
     validates :user_id, presence: false
     validates :body, presence: true
 
+    has_one_attached :image
+
     def self.search(query)
         where("title like ? OR body like ?", "%#{query}%", "%#{query}%")
     end

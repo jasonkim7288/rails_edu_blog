@@ -9,6 +9,7 @@ class Admin::PostsController < Admin::ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.image.attach(params[:post][:image])
     if @post.save
       flash[:notice] = "Post created"
       redirect_to admin_posts_path
@@ -44,6 +45,11 @@ class Admin::PostsController < Admin::ApplicationController
     else
       @posts = Post.all.order('created_at DESC').paginate(per_page: 3, page: params[:page])
     end
+    puts "!!!!!!!!!!!!!!!!!!"
+    @posts.each do |post|
+      puts post.image.attached?
+    end
+    puts "++++++++++++++++++"
   end
 
   private
@@ -52,6 +58,6 @@ class Admin::PostsController < Admin::ApplicationController
       
     end
     def post_params
-      params.require(:post).permit(:title, :category_id, :user_id, :tags, :image, :body)
+      params.require(:post).permit(:title, :category_id, :user_id, :tags, :body)
     end
 end
