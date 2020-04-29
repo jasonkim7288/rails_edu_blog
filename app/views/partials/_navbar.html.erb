@@ -14,7 +14,7 @@
                 <div id="search-bar" class="menu-item">
                     <i class="fas fa-search"></i>
                     <% if params[:controller] == "admin/posts" %>
-                        <%= form_with url: admin_posts_path, method: "get" do %>
+                        <%= form_with url: admin_posts_path, local: true, method: "get" do %>
                             <%= text_field_tag :search, params[:search], id: "input-search", placeholder: "Search Posts" %>
                         <% end %>
                     <% elsif params[:controller] == "admin/categories" %>
