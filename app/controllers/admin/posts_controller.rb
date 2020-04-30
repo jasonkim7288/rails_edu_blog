@@ -45,11 +45,6 @@ class Admin::PostsController < Admin::ApplicationController
     else
       @posts = Post.all.order('created_at DESC').paginate(per_page: 3, page: params[:page])
     end
-    puts "!!!!!!!!!!!!!!!!!!"
-    @posts.each do |post|
-      puts post.image.attached?
-    end
-    puts "++++++++++++++++++"
   end
 
   private

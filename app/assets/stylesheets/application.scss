@@ -14,7 +14,6 @@
  *= require_self
  */
 
-@import "froala_editor.min";
-@import "froala_style.min";
+@import "./actiontext.scss";
 @import 'partials/variables';
 @import 'main';

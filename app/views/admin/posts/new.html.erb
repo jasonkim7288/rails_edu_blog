@@ -1,5 +1,3 @@
-<script type="text/javascript" src = "../../assets/froala_editor.pkgd.min.js"></script>
-
 <div class="main">
     <section>
         <h1><%= @page_title %></h1>
@@ -38,11 +36,8 @@
 
                 <tr>
                     <td><%= f.label :body %></td>
-                    <td><%= f.text_area :body, id: "myEditor" %></td>
+                    <td><%= f.rich_text_area :body %></td>
                 </tr>
-                <script>
-                    new FroalaEditor('#myEditor', {toolbarInline: false})
-                </script>                
             </table>
 
             <div>

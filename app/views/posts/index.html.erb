@@ -1,83 +1,23 @@
-
 <div class="main">
     <section>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
-        <article class="article-summary">
-            <h1 class="article-title">Understanding Higher-Order Functions in JavaScript</h1>
-            <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officia culpa necessitatibus, quibusdam corporis assumenda. Quia cumque et minus quasi.</p>
-            <p class="article-author">Jason Kim</p>
-            <p class="article-created-at">Oct 24, 2018</p>
-            <%= image_tag 'https://placekitten.com/1000/400', class: "article-image" %>
-        </article>
+        <% if @posts.exists? %>
+            <% @posts.each do |post| %>
+                <article class="article-summary">
+                    <h1 class="article-title"><%= link_to post.title, post %></h1>
+                    <div class="article-content"><%= link_to post.body, post %></div>
+                    <p class="article-author"><%= post.user.name %></p>
+                    <p class="article-created-at"><%= post.created_at.to_time.strftime("%B %e at %l:%M %p") %></p>
+                    <% if post.image.attached? %>
+                        <%= image_tag post.image, class: "article-image" %>
+                    <% else %>
+                        <%= image_tag 'https://placekitten.com/1000/800', class: "article-image" %>
+                    <% end %>
+                </article>
+            <% end %>
+            <%= will_paginate @posts, class: 'page' %>
+        <% else %>
+            <h2>There is no page</h2>
+        <% end %>
     </section>
     <%= render "partials/aside" %>
 </div>

@@ -36,11 +36,8 @@
 
                 <tr>
                     <td><%= f.label :body %></td>
-                    <td><%= f.text_area :body, id: "myEditor" %></td>
+                    <td><%= f.rich_text_area :body %></td>
                 </tr>
-                <script>
-                    new FroalaEditor('#myEditor', {toolbarInline: false})
-                </script>                
             </table>
 
             <div>

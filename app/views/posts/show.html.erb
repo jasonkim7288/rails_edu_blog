@@ -1,2 +1,53 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="main">
+    <section class="content">
+        <article>
+            <h1><%= @post.title %></h1>
+            <div class="author-info">
+                <%= image_tag 'author_1.png', alt: "Author" %>
+                <div class="author-detail">
+                    <h4><%= @post.user.name %></h4>
+                    <h4><%= @post.created_at.to_time.strftime("%B %e at %l:%M %p") %></h4>
+                </div>
+            </div>
+            <% if @post.image.attached? %>
+                <%= image_tag @post.image, class: "main-img" %>
+            <% else %>
+                <%= image_tag 'https://placekitten.com/1000/800', class: "main-img" %>
+            <% end %>
+            <div class="article-content"><%= @post.body %></div>
+        </article>
+    </section>
+</div>
+
+<div class="main comment">
+    <section class="content">
+        <%= form_with model: @comment do |f| %>
+            <% if @comment.errors.any? %>
+                <% @comment.errors.full_messages.each do |msg| %>
+                    <h2><%= msg %></h2>
+                <% end %>
+            <% end %>
+
+            <table class="table-for-form">
+                <tr>
+                    <td><%= f.label :name %></td>
+                    <td><%= f.text_field :name %></td>
+                </tr>
+
+                <tr>
+                    <td><%= f.label :email %></td>
+                    <td><%= f.file_field :emmail %></td>
+                </tr>
+
+                <tr>
+                    <td><%= f.label :body %></td>
+                    <td><%= f.rich_text_area :body %></td>
+                </tr>
+            </table>
+
+            <div>
+                <%= f.submit %>
+            </div>
+        <% end %>
+    </section>
+</div>

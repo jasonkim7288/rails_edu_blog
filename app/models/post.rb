@@ -6,9 +6,9 @@ class Post < ApplicationRecord
     validates :title, presence: true
     validates :category_id, presence: true
     validates :user_id, presence: false
-    validates :body, presence: true
 
     has_one_attached :image
+    has_rich_text :body
 
     def self.search(query)
         where("title like ? OR body like ?", "%#{query}%", "%#{query}%")

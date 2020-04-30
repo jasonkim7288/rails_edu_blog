@@ -58,4 +58,3 @@ gem "mail_form"
 gem "simple_form"
 gem 'sprockets-rails', '2.3.3'
 gem 'will_paginate'
-gem "wysiwyg-rails"

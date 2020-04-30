@@ -115,11 +115,11 @@ header {
 }
 
 .main {
-    padding: 40px #{$body-outside-x};
+    padding: #{$footer-height} #{$body-outside-x};
     display: flex;
     section {
         max-width: 705px;
-        margin: 0 calc(#{$grid-gap} *2) 0 #{$body-inside-x};
+        margin: 0 calc(#{$grid-gap} *2) 20px #{$body-inside-x};
         .create-button {
             display: block;
             text-align: center;
@@ -151,6 +151,8 @@ header {
                 color: $gray-color;
                 height: 80px;
                 width: 500px;
+                padding: 0 10px;
+                background-color: #fafafa;
             }
             .article-created-at {
                 grid-area: 3 / 1;
@@ -207,18 +209,51 @@ header {
                 }
             }
         }
-        .page {
-            text-align: center;
-            a, span, em {
-                padding: 10px;
-                color: $gray-color;
+    }
+    .content {
+        margin: 0 unquote("min(200px, calc((100vw - 100%) / 2 + #{$body-inside-x}))") 20px;
+        article {
+            h1 {
+                font-size: 40px;
             }
-            .current {
-                color: $black-color;
-                font-style: normal;
+            .author-info {
+                margin-top: 27px;
+                display: flex;
+                justify-content: flex-start;
             }
-            a:hover {
-                color: $black-color;
+            
+            .author-info img {
+                display: inline-block;
+                border-radius: 50%;
+                height: 48px;
+            }
+            
+            .author-detail {
+                display: flex;
+                flex-flow: column;
+                justify-content: space-around;
+                align-content: flex-start;
+            }
+            
+            .author-info h4 {
+                margin-left: 14px;
+                display: inline-block;
+                font-weight: 100;
+                font-size: 0.9em;
+            }
+            
+            .main-img {
+                margin-top: 57px;
+                margin-bottom: 33px;
+                width: 100%;
+            }
+            
+            .article-content {
+                margin-top: 2em;
+                margin-bottom: -0.46em;
+                font-size: 21px;
+                font-weight: 100;
+                line-height: 1.58;
             }
         }
     }
@@ -263,6 +298,10 @@ header {
     }
 }
 
+.comment {
+    background-color: #f9f9f9;
+}
+
 #flash {
     padding-top: 0;
     padding-bottom: 0;
@@ -272,7 +311,7 @@ footer {
     position: fixed;
     bottom: 0;
     padding-top: 10px;
-    height: 50px;
+    height: $footer-height;
     display: block;
     text-align: center;
     width: 100%;
