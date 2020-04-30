@@ -4,6 +4,7 @@ $background-color: white;
 $body-inside-x : 20px;
 $max-width: unquote("min(1050px, 100vw)");
 $body-outside-x: calc((100vw - #{$max-width}) / 2 - #{$body-inside-x});
+$post-show-margin-x: unquote("min(200px, calc((100vw - 100%) / 2 + #{$body-inside-x}))");
 $gray-color: #8a8a8a;
 $black-color: black;
 $center-nav-height: 50px;

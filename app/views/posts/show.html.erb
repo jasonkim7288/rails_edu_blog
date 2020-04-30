@@ -19,7 +19,7 @@
     </section>
 </div>
 
-<div class="main comment">
+<div class="main comment-main">
     <section class="content">
         <%= form_with model: @comment do |f| %>
             <% if @comment.errors.any? %>
@@ -36,7 +36,7 @@
 
                 <tr>
                     <td><%= f.label :email %></td>
-                    <td><%= f.file_field :emmail %></td>
+                    <td><%= f.email_field :email %></td>
                 </tr>
 
                 <tr>
@@ -47,6 +47,15 @@
 
             <div>
                 <%= f.submit %>
+            </div>
+        <% end %>
+    </section>
+    <section class="content">
+        <% @comments.each do |comment| %>
+            <div class="comment">
+                <p><%= comment.name %></p>
+                <p><%= comment.created_at.to_time.strftime('%B %e at %l:%M %p') %></p>
+                <div class="comment-content"><%= comment.body %></div>
             </div>
         <% end %>
     </section>

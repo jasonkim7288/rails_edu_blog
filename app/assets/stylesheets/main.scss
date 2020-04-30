@@ -149,10 +149,11 @@ header {
             .article-content {
                 grid-area: 2 / 1;
                 color: $gray-color;
-                height: 80px;
+                height: 72px;
                 width: 500px;
                 padding: 0 10px;
                 background-color: #fafafa;
+                overflow: hidden;
             }
             .article-created-at {
                 grid-area: 3 / 1;
@@ -298,8 +299,19 @@ header {
     }
 }
 
-.comment {
+.comment-main {
     background-color: #f9f9f9;
+    flex-direction: column;
+    .comment {
+        width: 100%;
+        .comment-content {
+            margin-top: 2em;
+            margin-bottom: -0.46em;
+            font-size: 21px;
+            font-weight: 100;
+            line-height: 1.58;
+        }
+    }
 }
 
 #flash {
