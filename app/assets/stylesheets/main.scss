@@ -149,6 +149,8 @@ header {
             .article-content {
                 grid-area: 2 / 1;
                 color: $gray-color;
+                height: 80px;
+                width: 500px;
             }
             .article-created-at {
                 grid-area: 3 / 1;
@@ -160,7 +162,8 @@ header {
             .article-image {
                 grid-area: 1 / 2 / 5 / -1;
                 width: 150px;
-                height: 100%;
+                // height: 100%;
+                object-fit: cover;
             }
             .article-command {
                 grid-area: 4 / 1;
@@ -192,8 +195,17 @@ header {
                 cursor: pointer;
             }
         }
-        table {
+        table{
             margin-bottom: 30px;
+        }
+        .table-for-form {
+            border: none;
+            td {
+                border: none;
+                select, button, input {
+                    padding: 3px;
+                }
+            }
         }
         .page {
             text-align: center;

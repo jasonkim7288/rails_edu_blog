@@ -1,3 +1,9 @@
 <footer>
-    <p>Copyright &copy; 2020, eduBlog | <a href="login.html">Admin Login</a></p>
+    <p>Copyright &copy; 2020, eduBlog | 
+    <% if level == :user %>
+        <%= link_to 'Admin', admin_posts_path %>
+    <% else %>
+        <%= link_to 'User', root_path %>
+    <% end %>
+    </p>
 </footer>

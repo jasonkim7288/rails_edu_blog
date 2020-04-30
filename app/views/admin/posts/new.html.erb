@@ -1,3 +1,5 @@
+<script type="text/javascript" src = "../../assets/froala_editor.pkgd.min.js"></script>
+
 <div class="main">
     <section>
         <h1><%= @page_title %></h1>
@@ -8,35 +10,40 @@
                 <% end %>
             <% end %>
 
-            <div>
-                <%= f.label :title %>
-                <%= f.text_field :title %>
-            </div>
+            <table class="table-for-form">
+                <tr>
+                    <td><%= f.label :title %></td>
+                    <td><%= f.text_field :title %></td>
+                </tr>
 
-            <div>
-                <%= f.label :category %>
-                <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "Select One"}) %>
-            </div>
+                <tr>
+                    <td><%= f.label :category %></td>
+                    <td><%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "Select One"}) %></td>
+                </tr>
 
-            <div>
-                <%= f.label :author %>
-                <%= f.collection_select(:user_id, @users, :id, :name, {prompt: "Select One"}) %>
-            </div>
+                <tr>
+                    <td><%= f.label :author %></td>
+                    <td><%= f.collection_select(:user_id, @users, :id, :name, {prompt: "Select One"}) %></td>
+                </tr>
 
-            <div>
-                <%= f.label :image %>
-                <%= f.file_field :image, accept: 'image/png, image/gif, image/jpeg, image/jpg, image/webp' %>
-            </div>
+                <tr>
+                    <td><%= f.label :image %></td>
+                    <td><%= f.file_field :image %></td>
+                </tr>
 
-            <div>
-                <%= f.label :tags %>
-                <%= f.text_area :tags %>
-            </div>
+                <tr>
+                    <td><%= f.label :tags %></td>
+                    <td><%= f.text_area :tags %></td>
+                </tr>
 
-            <div>
-                <%= f.label :body %>
-                <%= f.text_area :body %>
-            </div>
+                <tr>
+                    <td><%= f.label :body %></td>
+                    <td><%= f.text_area :body, id: "myEditor" %></td>
+                </tr>
+                <script>
+                    new FroalaEditor('#myEditor', {toolbarInline: false})
+                </script>                
+            </table>
 
             <div>
                 <%= f.submit %>
