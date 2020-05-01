@@ -1,0 +1,36 @@
+<div class="main comment-main">
+    <section class="content">
+        <h3><%= @post.comments.length %> Comments</h3>
+        <% @post.comments.each do |comment| %>
+            <div class="comment">
+                <p><%= comment.name %></p>
+                <p class="comment-date"><%= comment.created_at.to_time.strftime('%B %e at %l:%M %p') %></p>
+                <div class="comment-content"><%= comment.body %></div>
+            </div>
+        <% end %>
+    </section>
+    <section class="content">
+        <%= form_with model: [@post, @post.comments.build] do |f| %>
+            <table class="table-for-form">
+                <tr>
+                    <td><%= f.label :name %></td>
+                    <td><%= f.text_field :name %></td>
+                </tr>
+
+                <tr>
+                    <td><%= f.label :email %></td>
+                    <td><%= f.email_field :email %></td>
+                </tr>
+
+                <tr>
+                    <td><%= f.label :body %></td>
+                    <td><%= f.rich_text_area :body %></td>
+                </tr>
+            </table>
+
+            <div>
+                <%= f.submit %>
+            </div>
+        <% end %>
+    </section>
+</div>

@@ -19,44 +19,4 @@
     </section>
 </div>
 
-<div class="main comment-main">
-    <section class="content">
-        <%= form_with model: @comment do |f| %>
-            <% if @comment.errors.any? %>
-                <% @comment.errors.full_messages.each do |msg| %>
-                    <h2><%= msg %></h2>
-                <% end %>
-            <% end %>
-
-            <table class="table-for-form">
-                <tr>
-                    <td><%= f.label :name %></td>
-                    <td><%= f.text_field :name %></td>
-                </tr>
-
-                <tr>
-                    <td><%= f.label :email %></td>
-                    <td><%= f.email_field :email %></td>
-                </tr>
-
-                <tr>
-                    <td><%= f.label :body %></td>
-                    <td><%= f.rich_text_area :body %></td>
-                </tr>
-            </table>
-
-            <div>
-                <%= f.submit %>
-            </div>
-        <% end %>
-    </section>
-    <section class="content">
-        <% @comments.each do |comment| %>
-            <div class="comment">
-                <p><%= comment.name %></p>
-                <p><%= comment.created_at.to_time.strftime('%B %e at %l:%M %p') %></p>
-                <div class="comment-content"><%= comment.body %></div>
-            </div>
-        <% end %>
-    </section>
-</div>
+<%= render 'partials/comments' %>

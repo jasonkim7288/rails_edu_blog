@@ -1,17 +1,27 @@
 class PostsController < ApplicationController
+  before_action :set_variables
+
   def index
     if params[:search]
       @posts = Post.search(params[:search]).all.order('created_at DESC').paginate(per_page: 3, page: params[:page])
     else
       @posts = Post.all.order("created_at DESC").paginate(per_page: 3, page: params[:page])
     end
-    @categories = Category.all
   end
 
   def show
     @post = Post.find(params[:id])
-    @categories = Category.all
     @comment = Comment.new
     @comments = Comment.all
+    puts "*****************************"
+    p @post.comments
+    p @post.comments.length
+    puts "*****************************"
+
   end
+
+  private
+    def set_variables
+      @categories = Category.all
+    end
 end
