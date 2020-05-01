@@ -9,7 +9,9 @@ class Admin::PostsController < Admin::ApplicationController
 
   def create
     @post = Post.new(post_params)
+    puts "++++++++++++++++++++++++++++++++++++++++"
     @post.image.attach(params[:post][:image])
+    puts "++++++++++++++++++++++++++++++++++++++++"
     if @post.save
       flash[:notice] = "Post created"
       redirect_to admin_posts_path
@@ -53,6 +55,6 @@ class Admin::PostsController < Admin::ApplicationController
       
     end
     def post_params
-      params.require(:post).permit(:title, :category_id, :user_id, :tags, :body)
+      params.require(:post).permit(:title, :category_id, :user_id, :tags, :body, :image)
     end
 end

@@ -25,6 +25,10 @@
                         <%= form_with url: admin_users_path, local: true, method: "get" do %>
                             <%= text_field_tag :search, params[:search], id: "input-search", placeholder: "Search Users" %>
                         <% end %>
+                    <% elsif params[:controller] == "posts"%>
+                        <%= form_with url: posts_path, local: true, method: "get" do %>
+                            <%= text_field_tag :search, params[:search], id: "input-search", placeholder: "Search Posts" %>
+                        <% end %>
                     <% end %>
                 </div>
                 <a href="<%= contact_path %>">
@@ -47,11 +51,13 @@
                 <%= link_to "Categories", admin_categories_path, class: "category #{params[:controller] == 'admin/categories' ? 'active' : ''}" %>
                 <%= link_to "Users", admin_users_path, class: "category #{params[:controller] == 'admin/users' ? 'active' : ''}" %>
             <% else %>
-                <%= link_to "<", "#", class: "category" %>
-                <% categories.each do |category| %>
-                    <%= link_to category[:name], "#", class: "category" %>
+                <% if params[:controller] == 'posts' || params[:controller] == 'categories' %>
+                    <%= link_to "<", "#", class: "category" %>
+                    <% @categories.each do |category| %>
+                        <%= link_to category.name, category, class: "category #{(@category && @category.id == category.id) ? 'active' : ''}" %>
+                    <% end %>
+                    <%= link_to ">", "#", class: "category" %>
                 <% end %>
-                <%= link_to ">", "#", class: "category" %>
             <% end %>
         </div>
     </nav>
