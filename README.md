@@ -1,24 +1,11 @@
-# README
+Chatting page inside my portfolio
+Link
+Github link : https://github.com/jasonkim7288/rails_edu_blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Description
+This rails app is a simple blog with Admin function. It copied the layout of Medium.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Tech stack
+Rails : main source code programming
+Postgresql : database for storing user info and message history
+Pagination gem : for pagination of posts
